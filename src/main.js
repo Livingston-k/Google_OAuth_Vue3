@@ -1,14 +1,13 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
 import App from './App.vue'
-import router from './router'
-
-import './assets/main.css'
 
 const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
+import gAuthPlugin from 'vue3-google-oauth2';
+let gauthClientId = '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleusercontent.com';
+app.use(gAuthPlugin, {
+  clientId: gauthClientId,
+  scope: 'email',
+  prompt: 'consent',
+})
 
 app.mount('#app')
